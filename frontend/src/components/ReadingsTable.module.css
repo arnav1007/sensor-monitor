@@ -1,0 +1,37 @@
+.wrapper h3 {
+  font-size: 14px;
+  font-weight: 600;
+  color: #374151;
+  margin: 0 0 8px;
+}
+
+.table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 13px;
+}
+
+.table th {
+  text-align: left;
+  padding: 6px 8px;
+  color: #9ca3af;
+  font-weight: 500;
+  font-size: 12px;
+  border-bottom: 1px solid #f3f4f6;
+}
+
+.table td {
+  padding: 6px 8px;
+  border-bottom: 1px solid #f9fafb;
+}
+
+.tempCell {
+  font-weight: 600;
+}
+
+.noData {
+  color: #9ca3af;
+  font-size: 13px;
+  text-align: center;
+  padding: 16px 0;
+}
