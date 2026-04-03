@@ -1,0 +1,32 @@
+databases:
+  - name: sensor-monitor-db
+    plan: free
+    databaseName: sensor_monitor
+    user: sensor_user
+
+services:
+  - type: web
+    name: sensor-monitor-api
+    runtime: docker
+    dockerfilePath: ./backend/Dockerfile
+    dockerContext: ./backend
+    plan: free
+    envVars:
+      - key: DATABASE_URL
+        fromDatabase:
+          name: sensor-monitor-db
+          property: connectionURI
+
+  - type: web
+    name: sensor-monitor-dashboard
+    runtime: static
+    buildCommand: cd frontend && npm install && npm run build
+    staticPublishPath: ./frontend/dist
+    plan: free
+    envVars:
+      - key: VITE_API_URL
+        value: https://sensor-monitor-api.onrender.com/api
+    routes:
+      - type: rewrite
+        source: /*
+        destination: /index.html
